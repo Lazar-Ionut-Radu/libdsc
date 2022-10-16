@@ -24,6 +24,13 @@ typedef struct Vector {
     void (*free_func)(void *);
 } Vector;
 
+// Creates a vector and returns a pointer to it.
+// If it fails returns NULL.
+Vector *v_create(size_t data_size, void (*free_func)(void *));
+
+// Frees the memory of a vector.
+void v_free(Vector *vector);
+
 // Returns 0 if the vector is alloc'ed, -1 otherwise. 
 int _v_is_allocated(Vector *vector);
 
@@ -52,15 +59,15 @@ int v_push_back(Vector *vector, void *data);
 // If it fails the vector is left unchanged.
 int v_push_front(Vector *vector, void *data);
 
-// Removes an element from the vector and returns it.
+// Removes an element from the vector and returns a pointer to it.
 // If it fails returns NULL and leaves the vector unchanged.
 void *v_remove(Vector *vector, size_t index);
 
-// Removes the last element from the vector and returns it.
+// Removes the last element from the vector and returns a pointer to it.
 // If it fails returns NULL and leaves the vector unchanged.
 void *v_pop_back(Vector *vector);
 
-// Removes the first element from the vector and returns it.
+// Removes the first element from the vector and returns a pointer to it.
 // If it fails returns NULL and leaves the vector unchanged.
 void *v_pop_front(Vector *vector);
 
