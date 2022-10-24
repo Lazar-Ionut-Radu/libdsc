@@ -1,5 +1,4 @@
 #include "vector_algorithms.h"
-#include "defaults.h"
 
 int v_binary_search(Vector *vector, int (*cmp)(void *, void *), void *data)
 {
@@ -27,10 +26,6 @@ int v_binary_search(Vector *vector, int (*cmp)(void *, void *), void *data)
 
 void v_bubble_sort(Vector *vector, int (*cmp)(void *, void *))
 {
-    if (_SHOW_DATA_SORTS) {
-        
-    }
-    
     // Swaps adjacent element until: the first is placed corectly, the second 
     // one is placed corectly and so on. 
     for (int i = vector->size - 1; i >= 0; i--)

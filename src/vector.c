@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "vector_algorithms.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -183,4 +183,52 @@ void *v_pop_back(Vector *vector)
 void *v_pop_front(Vector *vector)
 {
     return v_remove(vector, 0);
+}
+
+
+int test_cmp_int(void *int1, void *int2)
+{
+    int i1 = *((int *)int1);
+    int i2 = *((int *)int2);
+
+    if (i1 == i2)
+        return 0;
+    if (i1 > i2)
+        return 1;
+    return -1;
+}
+
+
+
+int main(void)
+{
+    Vector *vector = v_create(sizeof(int), free);
+    int a;
+    a = 7;
+    v_push_back(vector, &a);
+    a = 6;
+    v_push_back(vector, &a);
+    a = 5;
+    v_push_back(vector, &a);
+    a = 4;
+    v_push_back(vector, &a);
+    a = 3;
+    v_push_back(vector, &a);
+    a = 2;
+    v_push_back(vector, &a);
+    a = 1;
+    v_push_back(vector, &a);
+    
+    for (int i = 0; i < vector->size; i++)
+        printf("%d ", v_get(vector, i, int));
+    printf("\n");
+
+    v_merge_sort(vector, test_cmp_int, 0, vector->size - 1);
+
+    for (int i = 0; i < vector->size; i++)
+        printf("%d ", v_get(vector, i, int));
+    printf("\n");
+    
+    v_free(vector);
+    return 0;
 }
