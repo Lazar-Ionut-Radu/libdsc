@@ -35,6 +35,14 @@ void v_free(Vector *vector);
 // Returns 0 if the vector is alloc'ed, -1 otherwise. 
 int _v_is_allocated(Vector *vector);
 
+// Returns the size of the vector.
+// If the vector is not alloc'ed returns -1.
+int v_get_size(Vector *vector);
+
+// Returns the capacity of the vector.
+// If the vector is not alloc'ed returns -1.
+int v_get_capacity(Vector *vector);
+
 // Doubles the capacity of the vector.
 // Returns 0 for succes, -1 for failure.
 // If it fails, the vector remains unchanged.

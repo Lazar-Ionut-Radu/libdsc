@@ -54,6 +54,27 @@ int _v_is_allocated(Vector *vector)
     return 0;
 }
 
+int v_get_size(Vector *vector)
+{
+    // If the vector is not alloc'ed return failure.
+    if (_v_is_allocated != 0)
+        return -1;
+
+    // Otherwise the size.
+    return vector->size;
+}
+
+
+int v_get_capacity(Vector *vector)
+{
+    // If the vector is not alloc'ed return failure.
+    if (_v_is_allocated != 0)
+        return -1;
+
+    // Otherwise the capacity.
+    return vector->capacity;
+}
+
 int _v_increase_capacity(Vector *vector) 
 {
     // Return -1 for failure if the vector is not alloc'ed.
@@ -197,8 +218,6 @@ int test_cmp_int(void *int1, void *int2)
         return 1;
     return -1;
 }
-
-
 
 int main(void)
 {

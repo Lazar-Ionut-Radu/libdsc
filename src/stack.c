@@ -19,6 +19,26 @@ Stack *s_create(size_t data_size, void (*free_func)(void *))
     return stack;
 }
 
+int _st_is_allocated(Stack *stack)
+{
+    // Check if the queue is alloc'ed.
+    if (stack == NULL)
+        return -1;
+
+    // Check if the vector inside is alloc'ed
+    return _v_is_allocated(stack->vector);
+}
+
+int st_get_size(Stack *stack)
+{
+    // Return -1 if the queue is alloc'ed.
+    if (_st_is_allocated(stack) == -1)
+        return -1;
+
+    // Otherwise return the size of the queue.
+    return stack->vector->size;
+}
+
 void st_free(Stack *stack)
 {
     // Free the vector inside.

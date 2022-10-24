@@ -19,6 +19,10 @@ Bitset *bs_create(size_t size);
 // Returns 0 if the bitset is alloc'ed, -1 otherwise.
 int _bs_is_allocated(Bitset *bitset);
 
+// Returns the size of the bitset.
+// If the vector is not alloc'ed returns -1.
+int bs_get_size(Bitset *bitset);
+
 // Free's the memory of a bitset.
 void bs_free(Bitset *bitset);
 

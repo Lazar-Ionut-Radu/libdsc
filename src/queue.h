@@ -15,6 +15,12 @@ Queue *q_create(size_t data_size, void (*free_func)(void *));
 // Free's the memory of a queue.
 void q_free(Queue *queue);
 
+// Returns 0 if the queue is alloc'ed, -1 otherwise. 
+int _q_is_allocated(Queue *queue);
+
+// Returns the size of the queue, or -1 if it is not alloc'ed
+int q_get_size(Queue *queue);
+
 // Insert an element at the beginning of the queue.
 // Returns 1 for succes, -1 for failure.
 // If it fails the queue is left unchanged.

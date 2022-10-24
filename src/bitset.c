@@ -38,6 +38,15 @@ int _bs_is_allocated(Bitset *bitset)
     return 0;
 }
 
+int bs_get_size(Bitset *bitset)
+{
+    // If the bitset is not alloc'ed return failure.
+    if (_bs_is_allocated(bitset) == -1)
+        return -1;
+
+    return bitset->size;
+}
+
 void bs_free(Bitset *bitset)
 {
     if (bitset == NULL)
