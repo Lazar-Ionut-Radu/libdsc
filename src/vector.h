@@ -2,6 +2,7 @@
 #define _LIBDSC_VECTOR_H
 
 #include <stdlib.h> // For size_t.
+#include "utility.h"
 
 // The capacity of the vector when it is created
 #define INITIAL_CAPACITY 8
@@ -70,5 +71,9 @@ void *v_pop_back(Vector *vector);
 // Removes the first element from the vector and returns a pointer to it.
 // If it fails returns NULL and leaves the vector unchanged.
 void *v_pop_front(Vector *vector);
+
+// Returns the value of the element at index "index", in the vector "vector"
+// interpreted as "type".
+#define v_get(vector, index, type) _GET_VALUE(((Vector *)vector)->data[index], type)
 
 #endif // _LIBDSC_VECT0R_H
