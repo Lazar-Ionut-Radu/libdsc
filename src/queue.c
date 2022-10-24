@@ -9,7 +9,8 @@ Queue *q_create(size_t data_size, void (*free_func)(void *))
 
     // Now the rest is easy.
     // Create the vector inside, if it fails clean up and return NULL.
-    if (queue->vector = v_create(data_size, free_func) == NULL) {
+    queue->vector = v_create(data_size, free_func);
+    if (queue->vector == NULL) {
         free(queue);
         return NULL;
     }
@@ -24,7 +25,7 @@ void s_free(Queue *queue)
     v_free(queue->vector);
 
     // Free the stack struct.
-    v_free(queue);
+    free(queue);
     queue = NULL;
 }
 
