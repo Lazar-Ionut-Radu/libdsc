@@ -37,4 +37,19 @@ int bs_switch_bit(Bitset *bitset, size_t index);
 // Returns -1 for failure.
 int bs_get_bit(Bitset *bitset, size_t index);
 
+// Stores in b1 the result of b1 OR b2.
+// Returns -1 for failure, 0 for succes.
+int bs_or(Bitset *b1, Bitset *b2);
+
+// Stores in b1 the result of b1 AND b2.
+// Returns -1 for failure, 0 for succes.
+int bs_and(Bitset *b1, Bitset *b2);
+
+// Stores in b1 the result of b1 XOR b2.
+// Returns -1 for failure, 0 for succes.
+int bs_xor(Bitset *b1, Bitset *b2);
+
+// Negates the bitset given as parameter.
+int bs_not(Bitset *bitset);
+
 #endif // _LIBDSC_BITSET_H

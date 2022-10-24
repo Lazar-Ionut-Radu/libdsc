@@ -118,10 +118,63 @@ int bs_get_bit(Bitset *bitset, size_t index)
     return 0;
 }
 
-int main(void)
+int bs_or(Bitset *b1, Bitset *b2)
 {
-    Bitset *bitset = bs_create(17);
-    bs_free(bitset);
+    // Check if the bitsets are alloc'ed.
+    if (_bs_is_allocated(b1) == -1 || _bs_is_allocated(b2) == -1)
+        return -1;
 
+    // Return failure if the bitsets are of different lengths.
+    if (b1->size != b2->size)
+        return -1;
+
+    // OR them together.
+    for (int i = 0; i < b1->size; i++)
+        bs_set_bit(b1, i, bs_get_bit(b1, i) | bs_get_bit(b2, i));
+    return 0;
+}
+
+int bs_and(Bitset *b1, Bitset *b2)
+{
+    // Check if the bitsets are alloc'ed.
+    if (_bs_is_allocated(b1) == -1 || _bs_is_allocated(b2) == -1)
+        return -1;
+
+    // Return failure if the bitsets are of different lengths.
+    if (b1->size != b2->size)
+        return -1;
+
+    // AND them together.
+    for (int i = 0; i < b1->size; i++)
+        bs_set_bit(b1, i, bs_get_bit(b1, i) & bs_get_bit(b2, i));
+    return 0;
+}
+
+int bs_xor(Bitset *b1, Bitset *b2)
+{
+    // Check if the bitsets are alloc'ed.
+    if (_bs_is_allocated(b1) == -1 || _bs_is_allocated(b2) == -1)
+        return -1;
+
+    // Return failure if the bitsets are of different lengths.
+    if (b1->size != b2->size)
+        return -1;
+
+    // XOR them together.
+    for (int i = 0; i < b1->size; i++)
+        bs_set_bit(b1, i, bs_get_bit(b1, i) ^ bs_get_bit(b2, i));
+    return 0;
+}
+
+
+int bs_not(Bitset *bitset)
+{
+    // Check if the bitset is alloc'ed.
+    if (_bs_is_allocated(bitset) == -1)
+        return -1;
+
+    // Negate the bitset.
+    for (int i = 0; i < bitset->size; i++)
+        bs_switch_bit(bitset, i);
     return 0;
 }
